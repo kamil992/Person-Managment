@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+</head>
+<body>
+<form method="post" action="/login">
+<div class="text-center">
+    <br/>
+    <h1> Log in to Users Managment site</h1>
+    <br/>
+    Login <input type="text" th:name="login" placeholder="login"/>
+    Password <input type="password" th:name="password" placeholder="password">
+    <br/><br/>
+    <input type="submit" value="get in"/>
+</div>
+</form>
+</body>
+</html>

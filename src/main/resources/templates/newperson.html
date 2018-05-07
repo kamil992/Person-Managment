@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>New User</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+</head>
+<body style="margin-top: 30px">
+
+<center>
+    <h2>Enter New Person</h2>
+    <br/>
+    <br/>
+
+    <form th:object="${personForm}" method="post" action="/newperson" style="margin-right: 450px; margin-left: 450px">
+
+            <div class="form-group row">
+                <label for="fn" class="col-sm-2 col-form-label">First-name</label>
+                <div class="col-sm-10">
+                <input type="text" class="form-control" id="fn" th:field="*{firstname}" placeholder="First Name">
+                <small class="form-text text-muted" class="text-danger" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">Error</small>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="ln" class="col-sm-2 col-form-label">Last-name</label>
+                <div class="col-sm-10">
+                <input type="text" class="form-control" id="ln" th:field="*{lastname}" placeholder="Last Name">
+                <small class="form-text text-muted" class="text-danger" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">Error</small>
+                </div>
+            </div>
+        <div class="form-group row">
+            <label for="age" class="col-sm-2 col-form-label">Age</label>
+            <div class="col-sm-10">
+            <input type="number" class="form-control" id="age" th:field="*{age}" placeholder="Age">
+            <small class="form-text text-muted" class="text-danger" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Error</small>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="gender" class="col-sm-2 col-form-label">Gender</label>
+            <div class="col-sm-10">
+            <input type="text" class="form-control" id="gender" th:field="*{gender}" placeholder="Gender">
+                <small class="form-text text-muted" class="text-danger" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}">Error</small>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="email" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+            <input type="email" class="form-control" id="email" th:field="*{email}" placeholder="Email">
+            <small class="form-text text-muted" class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error</small>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="profession" class="col-sm-2 col-form-label">Profession</label>
+            <div class="col-sm-10">
+            <input type="text" class="form-control" id="profession" th:field="*{profession}" placeholder="Profession">
+            <small class="form-text text-muted" class="text-danger" th:if="${#fields.hasErrors('profession')}" th:errors="*{profession}">Error</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-group row">
+            <a class="col-sm-8" href="/"> <-previous  </a>  <button type="submit" class="btn btn-success">Add</button>
+            </div>
+        </div>
+    </form>
+</center>
+
+</body>
+</html>

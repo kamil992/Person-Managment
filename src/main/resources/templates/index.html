@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+</head>
+
+<body style="margin: 30px">
+<div class="text-center">
+<h1> Persons Managment  </h1>
+</div>
+<br/>
+<button class="btn btn-primary" type="button" onclick="location.href='/newperson'">Add Person</button>
+<br/>
+
+    <table class="table table-striped" style="margin-top: 30px">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Email</th>
+            <th scope="col">Profession</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="content : ${persons}">
+            <th th:text="${content.getId()}"></th>
+            <td th:text="${content.getFirstname()}"></td>
+            <td th:text="${content.getLastname()}"></td>
+            <td th:text="${content.getAge()}"></td>
+            <td th:text="${content.getGender()}"></td>
+            <td th:text="${content.getEmail()}"></td>
+            <td th:text="${content.getProfession()}"></td>
+            <td>
+            <a class="btn btn-danger" type="button" th:href="'/delete/' + ${content.getId()}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
