@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import pl.kamilbiernacki.usermanagment.models.PersonModel;
 import pl.kamilbiernacki.usermanagment.models.forms.PersonForm;
 import pl.kamilbiernacki.usermanagment.models.repositories.PersonRepository;
+import pl.kamilbiernacki.usermanagment.models.services.PersonService;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
@@ -18,9 +20,13 @@ public class MainController {
     final
     PersonRepository personRepository;
 
+    final
+    PersonService personService;
+
     @Autowired
-    public MainController(PersonRepository personRepository) {
+    public MainController(PersonRepository personRepository, PersonService personService) {
         this.personRepository = personRepository;
+        this.personService = personService;
     }
 
     @GetMapping("/")
@@ -39,6 +45,7 @@ public class MainController {
                             @RequestParam("password") String password) {
 
         if (login.equals("user") && password.equals("user123")) {
+            personService.setLogin(true);
             return "redirect:/";
         }
 
@@ -67,6 +74,14 @@ public class MainController {
     public String deletePost(@PathVariable("id") int id){
         personRepository.delete(id);
         return "redirect:/";
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest requestHandler){
+        personService.setLogin(false);
+        requestHandler.changeSessionId();
+
+        return "redirect:/login";
     }
 
 }
