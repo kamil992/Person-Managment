@@ -5,17 +5,31 @@
     <title>Login</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 </head>
-<body>
-<form method="post" action="/login">
-<div class="text-center">
-    <br/>
-    <h1> Log in to Persons Managment site</h1>
-    <br/>
-    Login <input type="text" th:name="login" placeholder="login"/>
-    Password <input type="password" th:name="password" placeholder="password">
+<body class="text-center" style="margin: 30px">
+<br/>
+<h1 > Log in to Persons Managment site</h1>
+<br/>
+<div th:if="${isValid != null}" class="alert alert-danger">
+    <h1 th:text="${isValid}"></h1>
+</div>
+<center>
+<form style="width: 30%" method="post" action="/login">
+<div>
+
+    <div class="input-group">
+            <span class="input-group-addon">
+                <i class="glyphicon glyphicon-user"></i>
+            </span>
+        <input  type="text" class="form-control" th:name="login" placeholder="Login">
+    </div>
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+        <input type="password" class="form-control" th:name="password" placeholder="Password">
+    </div>
     <br/><br/>
-    <input type="submit" value="get in"/>
+    <button type="submit" class="btn btn-primary">Log In</button>
 </div>
 </form>
+</center>
 </body>
 </html>

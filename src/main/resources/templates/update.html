@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Update</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+</head>
+<body style="margin: 30px">
+<center>
+<form th:object="${person}" method="post">
+    <strong style="font-size: 32px; margin: 30px">Person Data:</strong><br/>
+<b>Id:</b> <a th:text="${person.getId()}"></a><br/>
+
+    <b>First name:</b> <a for="firstname" th:text="${person.getFirstname()}"></a>
+    <input type="text" id="firstname" th:field="*{firstname}" placeholder="First name"><br/>
+
+    <b>Last name:</b> <a for="lastname" th:text="${person.getLastname()}"></a>
+    <input type="text" id="lastname" th:field="*{lastname}" placeholder="First name"><br/>
+
+    <b>Age:</b> <a for="age" th:text="${person.getAge()}"></a>
+    <input type="number" id="age" th:field="*{age}" placeholder="First name"><br/>
+
+    <b>Gender:</b> <a for="gender" th:text="${person.getGender()}"></a>
+    <input type="text" id="gender" th:field="*{gender}" placeholder="First name"><br/>
+
+    <b>Email:</b> <a for="email" th:text="${person.getEmail()}"></a>
+    <input type="email" id="email" th:field="*{email}" placeholder="First name"><br/>
+
+    <b>Profession:</b> <a for="profession" th:text="${person.getProfession()}"></a>
+    <input type="text" id="profession" th:field="*{profession}" placeholder="First name"><br/><br/>
+
+    <a class="col-sm-8" href="/"> <-previous  </a> <button type="submit" class="btn btn-success">Update</button>
+</form>
+</center>
+
+</body>
+</html>

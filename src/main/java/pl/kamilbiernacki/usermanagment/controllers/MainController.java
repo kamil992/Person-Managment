@@ -42,13 +42,15 @@ public class MainController {
 
     @PostMapping("/login")
     public String postLogin(@RequestParam("login") String login,
-                            @RequestParam("password") String password) {
+                            @RequestParam("password") String password,
+                            Model model) {
 
         if (login.equals("user") && password.equals("user123")) {
             personService.setLogin(true);
             return "redirect:/";
         }
 
+        model.addAttribute("isValid", "Wrong Login or Password!");
         return "login";
     }
 
@@ -70,8 +72,27 @@ public class MainController {
         return "redirect:/";
     }
 
+    @GetMapping("/update/{id}")
+    public String updatePerson(@PathVariable("id") int id,
+                               Model model){
+        model.addAttribute("person", personRepository.findById(id));
+        return "update";
+    }
+
+    @PostMapping("/update/{id}")
+    public String postUpdate(@PathVariable("id") int id,
+                             @ModelAttribute("person") PersonModel personModel,
+                             Model model){
+
+
+        model.addAttribute("person", personRepository.findById(id));
+        personRepository.save(personModel);
+
+        return "redirect:/";
+    }
+
     @GetMapping("/delete/{id}")
-    public String deletePost(@PathVariable("id") int id){
+    public String deletePerson(@PathVariable("id") int id){
         personRepository.delete(id);
         return "redirect:/";
     }

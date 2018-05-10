@@ -38,7 +38,10 @@
             <td th:text="${content.getEmail()}"></td>
             <td th:text="${content.getProfession()}"></td>
             <td>
-            <a class="btn btn-danger" type="button" th:href="'/delete/' + ${content.getId()}">Delete</a>
+                <a class="btn btn-secondary" type="button" th:href="'/update/' + ${content.getId()}">Update</a>
+            </td>
+            <td>
+                <a class="btn btn-danger" type="button" th:href="'/delete/' + ${content.getId()}">X Delete</a>
             </td>
         </tr>
         </tbody>
