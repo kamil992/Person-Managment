@@ -12,11 +12,15 @@
 <div th:if="${isValid != null}" class="alert alert-danger">
     <h1 th:text="${isValid}"></h1>
 </div>
+
+<div th:if="${logoutMessage  != null}" class="alert alert-success" role="alert">
+    <h1 th:text="${logoutMessage}"></h1>
+</div>
 <center>
 <form style="width: 30%" method="post" action="/login">
 <div>
 
-    <div class="input-group">
+    <div class="input-group" style="margin-bottom: 5px">
             <span class="input-group-addon">
                 <i class="glyphicon glyphicon-user"></i>
             </span>

@@ -67,7 +67,8 @@ public class MainController {
             return "newperson";
         }
         PersonModel personModel = new PersonModel(personForm);
-        personRepository.save(personModel);
+//        personRepository.save(personModel);
+        personService.savePerson(personModel);
 
         return "redirect:/";
     }
@@ -86,22 +87,25 @@ public class MainController {
 
 
         model.addAttribute("person", personRepository.findById(id));
-        personRepository.save(personModel);
+//        personRepository.save(personModel);
+        personService.savePerson(personModel);
 
         return "redirect:/";
     }
 
     @GetMapping("/delete/{id}")
     public String deletePerson(@PathVariable("id") int id){
-        personRepository.delete(id);
+//        personRepository.delete(id);
+        personService.deletePerson(id);
         return "redirect:/";
     }
 
     @GetMapping("/logout")
-    public String logout(HttpServletRequest requestHandler){
+    public String logout(HttpServletRequest requestHandler, Model model){
         personService.setLogin(false);
         requestHandler.changeSessionId();
 
+        model.addAttribute("logoutMessage", "You logged out succesfully.");
         return "redirect:/login";
     }
 

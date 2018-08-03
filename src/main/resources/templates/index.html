@@ -41,7 +41,9 @@
                 <a class="btn btn-secondary" type="button" th:href="'/update/' + ${content.getId()}">Update</a>
             </td>
             <td>
-                <a class="btn btn-danger" type="button" th:href="'/delete/' + ${content.getId()}">X Delete</a>
+                <a class="btn btn-danger" type="button" th:href="'/delete/' + ${content.getId()}"
+                   onclick="if (!confirm('Are You sure You want to delete this customer?'))
+				return false">X Delete</a>
             </td>
         </tr>
         </tbody>
